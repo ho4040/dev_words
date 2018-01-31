@@ -16,11 +16,11 @@
 					return {word:tokens[0], frequency:Number(tokens[1])}
 				});
 
-				$scope.result.length = 5000;
-
 				$scope.result.sort(function(a,b){
-					return a.frequency - b.frequency
+					return b.frequency - a.frequency
 				});
+
+				$scope.result.length = 5000;
 
 			}, err=>{
 				console.log(err)
