@@ -6,6 +6,13 @@ words extracted from
 * RFC documents
 * Python tutorial
 
+## scrap RFC documents
+
+```bash
+$ mkdir data_source
+$ python download_rfc_texts.py
+```
+
 ## run
 
 ```bash
