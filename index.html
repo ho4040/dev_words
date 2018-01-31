@@ -14,6 +14,8 @@
 				var temp = resp.data.split("\n").map(row=>{ 
 					var tokens = row.split(",")
 					return { word:tokens[0], frequency:Number(tokens[1]) }
+				}).filter(item=>{
+					return !!item.frequency
 				});
 
 				$scope.result = temp.sort(function(a,b){
