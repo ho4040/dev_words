@@ -15,6 +15,11 @@
 					var tokens = row.split(",")
 					return {word:tokens[0], frequency:Number(tokens[1])}
 				});
+
+				$scope.result.sort(function(a,b){
+					return a.frequency - b.frequency
+				});
+				
 			}, err=>{
 				console.log(err)
 			})
