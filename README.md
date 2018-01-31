@@ -1,13 +1,14 @@
-# dev words
+# developer's words
 
 Check word frequency for studying English.
 
-DEMO : https://ho4040.github.io/dev_words/
-
-words extracted from
+words are extracted from
 
 * RFC documents
 * Python tutorial
+
+DEMO : https://ho4040.github.io/dev_words/
+
 
 ## scrap RFC documents
 
