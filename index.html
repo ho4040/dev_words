@@ -11,12 +11,12 @@
 		app.controller("MainCtrl", function($scope, $http){
 			$http({method:"GET", url:"./result.csv"}).then(resp=>{
 
-				$scope.result = resp.data.split("\n").map(row=>{ 
+				var temp = resp.data.split("\n").map(row=>{ 
 					var tokens = row.split(",")
 					return { word:tokens[0], frequency:Number(tokens[1]) }
 				});
 
-				$scope.result = $scope.result.sort(function(a,b){
+				$scope.result = temp.sort(function(a,b){
 					return b.frequency - a.frequency;
 				});
 
@@ -35,6 +35,7 @@
 		<table class="table table-border table-striped">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Word</th>
 					<th>Freq</th>
 					<th>Naver dictionary</th>
@@ -42,6 +43,7 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in result track by $index">
+					<td>{{$index}}</td>
 					<td>{{item.word}}</td>
 					<td>{{item.frequency | number}}</td>
 					<td>
