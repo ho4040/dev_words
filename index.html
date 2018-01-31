@@ -1,0 +1,48 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Developer words</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script>
+		var app=angular.module('app', []);
+		app.controller("MainCtrl", function($scope, $http){
+			$http({method:"GET", url:"./result.csv"}).then(resp=>{
+				console.log(resp)
+				$scope.result = resp.data.split("\n").map(row=>{ 
+					var tokens = row.split(",")
+					return {word:tokens[0], frequency:Number(tokens[1])}
+				});
+			}, err=>{
+				console.log(err)
+			})
+		})
+	</script>
+</head>
+<body ng-app="app">
+	<div ng-controller="MainCtrl" class="container">
+		<h1>Dev words</h1>
+		<p>https://github.com/ho4040/dev_words</p>
+		<table class="table table-border table-striped">
+			<thead>
+				<tr>
+					<th>Word</th>
+					<th>Freq</th>
+					<th>Naver dictionary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in result track by $index">
+					<th>{{item.word}}</th>
+					<th>{{item.frequency | number}}</th>
+					<th>
+						<a target="_blank" href="http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query={{item.word}}">Naver</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
