@@ -16,7 +16,7 @@
 					return { word:tokens[0], frequency:Number(tokens[1]) }
 				});
 
-				$scope.result.sort(function(a,b){
+				$scope.result = $scope.result.sort(function(a,b){
 					return b.frequency - a.frequency;
 				});
 
