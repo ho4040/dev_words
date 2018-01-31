@@ -10,14 +10,14 @@
 		var app=angular.module('app', []);
 		app.controller("MainCtrl", function($scope, $http){
 			$http({method:"GET", url:"./result.csv"}).then(resp=>{
-				console.log(resp)
+
 				$scope.result = resp.data.split("\n").map(row=>{ 
 					var tokens = row.split(",")
-					return {word:tokens[0], frequency:Number(tokens[1])}
+					return { word:tokens[0], frequency:Number(tokens[1]) }
 				});
 
 				$scope.result.sort(function(a,b){
-					return b.frequency - a.frequency
+					return b.frequency - a.frequency;
 				});
 
 				$scope.result.length = 5000;
