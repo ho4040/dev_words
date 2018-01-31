@@ -10,7 +10,7 @@ words are extracted from
 DEMO : https://ho4040.github.io/dev_words/
 
 
-## scrap RFC documents
+## scrap data
 
 ```bash
 $ mkdir data_source
