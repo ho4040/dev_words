@@ -35,11 +35,11 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in result track by $index">
-					<th>{{item.word}}</th>
-					<th>{{item.frequency | number}}</th>
-					<th>
+					<td>{{item.word}}</td>
+					<td>{{item.frequency | number}}</td>
+					<td>
 						<a target="_blank" href="http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query={{item.word}}">Naver</a>
-					</th>
+					</td>
 				</tr>
 			</tbody>
 		</table>
