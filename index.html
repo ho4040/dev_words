@@ -39,9 +39,17 @@
 </head>
 <body ng-app="app">
 	<div ng-controller="MainCtrl" class="container">
-		<h1><label>프로그래머 기초 영단어 5000</label></h1>
-		<p>https://github.com/ho4040/dev_words</p>
-		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+
+		<div class="row">
+			<div class="col-md-6 col-xs-12">
+				<h1><label>프로그래머 기초 영단어 5000</label></h1>
+				<p>https://github.com/ho4040/dev_words</p>
+			</div>
+			<div class="col-md-6 col-xs-12">
+				<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+			</div>
+		</div>
+		
 		<table class="table table-border table-striped">
 			<thead>
 				<tr>
@@ -63,6 +71,7 @@
 				</tr>
 			</tbody>
 		</table>
+		
 		<div class="text-center">
 			<button class="btn btn-default" ng-click="limitation += 100">More</button>
 		</div>
