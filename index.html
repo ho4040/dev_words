@@ -58,7 +58,7 @@
 				$scope.result = words.map(e=>{
 					return { word:e, frequency:dict[e] }
 				})
-				
+
 				$scope.result = temp.sort(function(a,b){
 						return b.frequency - a.frequency;
 					});
@@ -108,8 +108,8 @@
 				<td>{{item.word}}</td>
 				<td>{{item.frequency | number}}</td>
 				<td>
-					<a target="_blank" href="http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query={{item.word}}">Def</a>
-					<a target="_blank" href="https://www.google.co.kr/search?tbm=isch&q={{item.word}}">Image</a>
+					<a target="_blank" href="http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query={{item.word}}">정의</a>
+					<a target="_blank" href="https://www.google.co.kr/search?tbm=isch&q={{item.word}}"> 이미지</a>
 				</td>
 			</tr>
 		</tbody>
