@@ -9,7 +9,12 @@
 	<script>
 		var app=angular.module('app', []);
 		app.controller("MainCtrl", function($scope, $http){
+
+			$scope.limitation = 100;
+
 			$http({method:"GET", url:"./result.csv"}).then(resp=>{
+
+
 
 				var temp = resp.data.split("\n").map(row=>{ 
 					var tokens = row.split(",")
@@ -34,29 +39,43 @@
 </head>
 <body ng-app="app">
 	<div ng-controller="MainCtrl" class="container">
-		<h1>Dev words 5000</h1>
+		<h1><label>프로그래머 기초 영단어 5000</label></h1>
 		<p>https://github.com/ho4040/dev_words</p>
+		<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 		<table class="table table-border table-striped">
 			<thead>
 				<tr>
 					<th>#</th>
 					<th>Word</th>
 					<th>Freq</th>
-					<th>Naver dictionary</th>
+					<th>About</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="item in result track by $index">
+				<tr ng-repeat="item in (result | limit:limitation) track by $index">
 					<td>{{$index}}</td>
 					<td>{{item.word}}</td>
 					<td>{{item.frequency | number}}</td>
 					<td>
-						<a target="_blank" href="http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query={{item.word}}">[Naver]</a>
-						<a target="_blank" href="https://www.google.co.kr/search?tbm=isch&q={{item.word}}">[Image]</a>
+						<a target="_blank" href="http://endic.naver.com/search.nhn?sLn=kr&isOnlyViewEE=N&query={{item.word}}">Def</a>
+						<a target="_blank" href="https://www.google.co.kr/search?tbm=isch&q={{item.word}}">Image</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		<div class="text-center">
+			<button class="btn btn-default" ng-click="limitation += 100">More</button>
+		</div>
+
 	</div>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.12&appId=146244262847239&autoLogAppEvents=1';
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>
