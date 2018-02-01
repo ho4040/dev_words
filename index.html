@@ -34,7 +34,6 @@
 					$scope.result = temp.sort(function(a,b){
 						return b.frequency - a.frequency;
 					});
-
 					$scope.result.length = 5000;
 					$scope.limitation = 100;
 
@@ -47,17 +46,23 @@
 				var dict = {};
 				tokens=text.match(/[a-z]{3,15}/ig).map(e=>{ return e.toLowerCase().trim(); });
 				for(var k in tokens){
-					if(k in dict)
-						dict[k]++;
+					var word = tokens[k]
+					if(word in dict)
+						dict[word]++;
 					else
-						dict[k]=0;
+						dict[word]=0;
 				}
+
 				var words = Object.keys(dict);
 
 				$scope.result = words.map(e=>{
 					return { word:e, frequency:dict[e] }
 				})
-
+				
+				$scope.result = temp.sort(function(a,b){
+						return b.frequency - a.frequency;
+					});
+					$scope.result.length = 5000;
 				$scope.limitation = 100;
 			}
 
