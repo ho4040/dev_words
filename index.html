@@ -59,10 +59,11 @@
 					return { word:e, frequency:dict[e] }
 				})
 
-				$scope.result = temp.sort(function(a,b){
-						return b.frequency - a.frequency;
-					});
-					$scope.result.length = 5000;
+				$scope.result = $scope.result.sort(function(a,b){
+					return b.frequency - a.frequency;
+				});
+
+				$scope.result.length = 5000;
 				$scope.limitation = 100;
 			}
 
