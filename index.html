@@ -45,7 +45,7 @@
 
 			$scope.analyse_custom_input = function(text){
 				var dict = {};
-				tokens=text.match(/[a-z]{3,15}/ig).map(e=>{ return e.toUppperCase().trim(); });
+				tokens=text.match(/[a-z]{3,15}/ig).map(e=>{ return e.toLowerCase().trim(); });
 				for(var k in tokens){
 					if(k in dict)
 						dict[k]++;
