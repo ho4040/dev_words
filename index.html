@@ -16,8 +16,6 @@
 		var app=angular.module('app', []);
 		app.controller("MainCtrl", function($scope, $http){
 
-			$scope.limitation = 100;
-
 			$scope.input = {
 				customInput:""
 			}
@@ -38,6 +36,7 @@
 					});
 
 					$scope.result.length = 5000;
+					$scope.limitation = 100;
 
 				}, err=>{
 					console.log(err)
