@@ -8,7 +8,6 @@ for filename in glob2.glob('./data_source/**/*.txt'):
 
 
 frequency = {}
-frequency2 = {}
 
 for path in files:
   document_text = open(path, 'r')
@@ -30,8 +29,8 @@ for path in invalid_files:
   match_pattern = re.findall(r'\b[a-z]{3,15}\b', text_string)
    
   for word in match_pattern:
-      count = frequency2.get(word,0)
-      frequency2[word] = count + 1
+      count = frequency.get(word,0)
+      frequency[word] = count - 1
        
 frequency_word_list = frequency.keys()
 frequency_data_list = []
