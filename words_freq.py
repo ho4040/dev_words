@@ -8,6 +8,7 @@ for filename in glob2.glob('./data_source/**/*.txt'):
 
 
 frequency = {}
+frequency2 = {}
 
 for path in files:
   document_text = open(path, 'r')
@@ -17,8 +18,27 @@ for path in files:
   for word in match_pattern:
       count = frequency.get(word,0)
       frequency[word] = count + 1
-       
-frequency_list = frequency.keys()
 
-for words in frequency_list:
-    print "{},{}".format(words, frequency[words])
+
+invalid_files = []
+for filename in glob2.glob('./invalid_data_source/**/*.txt'):
+    invalid_files.append(filename)
+
+for path in invalid_files:
+  document_text = open(path, 'r')
+  text_string = document_text.read().lower().strip()
+  match_pattern = re.findall(r'\b[a-z]{3,15}\b', text_string)
+   
+  for word in match_pattern:
+      count = frequency2.get(word,0)
+      frequency2[word] = count + 1
+       
+frequency_word_list = frequency.keys()
+frequency_data_list = []
+for words in frequency_word_list:
+    frequency_data_list.append([words, frequency[words]])
+
+frequency_data_list = sorted(frequency_data_list, key=lambda item: item[1], reverse=True)
+
+for i in range(5000):
+  print("{}, {}".format(frequency_data_list[i][0], frequency_data_list[i][1]))
